@@ -863,7 +863,7 @@ var $mgmDiscountDisplay, $referralHelper, $appliedDiscountDisplay;
 // ADMIN: sold-out filter (GitHub API에서 로드)
 // ============================================================
 var _soldOutCache = [];
-var GH_CONFIG_API = 'https://api.github.com/repos/hwajeongseo1001-tech/mgm-calculator/contents/mgm_config.json';
+var GH_CONFIG_API = 'https://api.github.com/repos/kt-mgm-tool/mgm-calculator/contents/mgm_config.json';
 
 function loadSoldOutFromServer(callback) {
   fetch(GH_CONFIG_API, { headers: { 'Accept': 'application/vnd.github.v3+json' } })

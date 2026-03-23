@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mgm-server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\user\\Desktop\\MGM\\serve_mgm.js"],
+      "port": 3789
+    }
+  ]
+}
