@@ -11,60 +11,82 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg-base: #f0f2f5;
+  /* KTM&S Brand Palette */
+  --bg-base: #f6f6f6;
   --bg-card: #ffffff;
-  --bg-input: #f4f5f7;
-  --border-default: rgba(0,0,0,0.06);
-  --border-hover: rgba(0,0,0,0.12);
-  --text-primary: #2d3436;
-  --text-secondary: #636e72;
-  --text-muted: #b2bec3;
-  --accent-blue: #4a7cff;
-  --accent-blue-dim: rgba(74,124,255,0.08);
-  --accent-coral: #e74c6f;
-  --accent-coral-dim: rgba(231,76,111,0.08);
-  --accent-green: #2ecc71;
-  --accent-green-dim: rgba(46,204,113,0.08);
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 16px;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --bg-input: #f9f9f9;
+  --border-default: #e0e0e0;
+  --border-hover: #b9b9b9;
+  --border-focus: rgba(5,164,188,0.45);
+  --text-primary: #221e1f;
+  --text-secondary: #4c4c4e;
+  --text-muted: #b9b9b9;
+  --accent-teal: #05A4BC;
+  --accent-teal-dim: rgba(5,164,188,0.08);
+  --kt-red: #EC1B23;
+  --kt-red-dim: rgba(236,27,35,0.08);
+  --accent-mint: #00A9A7;
+  --accent-mint-dim: rgba(0,169,167,0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
   --transition-fast: 150ms cubic-bezier(0.16,1,0.3,1);
 }
 
 html {
   font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary);
   background: var(--bg-base);
 }
 
 body { min-height: 100vh; background: var(--bg-base); }
 
-.header {
-  background: var(--bg-base);
-  padding: 32px 24px 16px;
-  text-align: center;
+/* === NAV BAR (KTM&S style) === */
+.hero-header {
+  background: #ffffff;
+  padding: 0;
+  border-bottom: 1px solid var(--border-default);
 }
 
-.header h1 {
-  font-size: 1.6rem;
+.hero-top {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-logo svg { width: 120px; height: auto; }
+
+.hero-logo {
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: -0.03em;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.header p {
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin-top: 8px;
+.hero-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: #ccc;
+}
+
+.hero-nav-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .header-actions {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 12px;
-  margin-top: 16px;
+  margin-left: auto;
 }
 
 .btn {
@@ -82,9 +104,9 @@ body { min-height: 100vh; background: var(--bg-base); }
 }
 
 .btn-primary {
-  background: var(--accent-blue);
+  background: var(--accent-teal);
   color: #fff;
-  border-color: var(--accent-blue);
+  border-color: var(--accent-teal);
 }
 
 .btn-primary:hover { opacity: 0.9; }
@@ -97,17 +119,17 @@ body { min-height: 100vh; background: var(--bg-base); }
 .btn-secondary:hover { border-color: var(--border-hover); }
 
 .btn-danger {
-  background: var(--accent-coral-dim);
-  color: var(--accent-coral);
-  border-color: rgba(231,76,111,0.2);
+  background: var(--kt-red-dim);
+  color: var(--kt-red);
+  border-color: rgba(236,27,35,0.2);
 }
 
-.btn-danger:hover { background: rgba(231,76,111,0.15); }
+.btn-danger:hover { background: rgba(236,27,35,0.15); }
 
 .main-wrap {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 16px 60px;
+  padding: 32px 16px 60px;
 }
 
 /* Stats */
@@ -130,12 +152,12 @@ body { min-height: 100vh; background: var(--bg-base); }
 .stat-value {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--accent-blue);
+  color: var(--accent-teal);
   line-height: 1;
 }
 
-.stat-value.coral { color: var(--accent-coral); }
-.stat-value.green { color: var(--accent-green); }
+.stat-value.coral { color: var(--kt-red); }
+.stat-value.green { color: var(--accent-mint); }
 
 .stat-label {
   font-size: 12px;
@@ -171,7 +193,7 @@ body { min-height: 100vh; background: var(--bg-base); }
 .filter-bar input:hover { border-color: var(--border-hover); }
 
 .filter-bar select:focus,
-.filter-bar input:focus { border-color: rgba(74,124,255,0.45); box-shadow: 0 0 0 3px rgba(74,124,255,0.12); }
+.filter-bar input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(5,164,188,0.12); }
 
 .filter-bar input { flex: 1; min-width: 180px; }
 
@@ -209,10 +231,10 @@ body { min-height: 100vh; background: var(--bg-base); }
 
 .model-table tr:last-child td { border-bottom: none; }
 
-.model-table tr:hover td { background: rgba(74,124,255,0.02); }
+.model-table tr:hover td { background: rgba(5,164,188,0.02); }
 
 .model-table tr.soldout td {
-  background: rgba(231,76,111,0.04);
+  background: rgba(236,27,35,0.04);
   color: var(--text-muted);
 }
 
@@ -231,9 +253,9 @@ body { min-height: 100vh; background: var(--bg-base); }
   font-weight: 600;
 }
 
-.badge-available { background: var(--accent-green-dim); color: var(--accent-green); }
-.badge-soldout { background: var(--accent-coral-dim); color: var(--accent-coral); }
-.badge-5g { background: var(--accent-blue-dim); color: var(--accent-blue); }
+.badge-available { background: var(--accent-mint-dim); color: var(--accent-mint); }
+.badge-soldout { background: var(--kt-red-dim); color: var(--kt-red); }
+.badge-5g { background: var(--accent-teal-dim); color: var(--accent-teal); }
 .badge-lte { background: rgba(255,165,0,0.1); color: #e67e22; }
 
 /* Toggle Switch */
@@ -249,7 +271,7 @@ body { min-height: 100vh; background: var(--bg-base); }
 .toggle-slider {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--accent-green);
+  background: var(--accent-mint);
   border-radius: 12px;
   transition: all var(--transition-fast);
 }
@@ -267,7 +289,7 @@ body { min-height: 100vh; background: var(--bg-base); }
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
-.toggle input:checked + .toggle-slider { background: var(--accent-coral); }
+.toggle input:checked + .toggle-slider { background: var(--kt-red); }
 .toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
 
 /* Toast notification */
@@ -295,6 +317,8 @@ body { min-height: 100vh; background: var(--bg-base); }
 
 /* Responsive */
 @media (max-width: 600px) {
+  .hero-top { flex-wrap: wrap; justify-content: center; padding: 16px 20px; }
+  .header-actions { margin-left: 0; width: 100%; justify-content: center; margin-top: 8px; }
   .stats-row { grid-template-columns: 1fr; }
   .model-table th:nth-child(4),
   .model-table td:nth-child(4) { display: none; }
@@ -310,12 +334,17 @@ body { min-height: 100vh; background: var(--bg-base); }
 </head>
 <body>
 
-<div class="header">
-  <h1>MGM 재고 관리</h1>
-  <p>구매모델 재고 상태를 관리합니다. 품절 표시된 모델은 견적 페이지에 표시되지 않습니다.</p>
-  <div class="header-actions">
-    <a href="mgm_calculator.html" class="btn btn-secondary">견적 페이지로 이동</a>
-    <button class="btn btn-danger" onclick="resetAll()">전체 초기화</button>
+<div class="hero-header">
+  <div class="hero-top">
+    <div class="hero-logo">
+      <svg width="103" height="30" viewBox="0 0 103 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.1593 24.7131L11.4656 17.7213L19.7311 7.54155H15.2231C13.1965 7.54155 11.8128 8.1625 10.5831 9.59754L6.22663 14.9539V0.244141H1.86041C0.83364 0.244141 0 1.07778 0 2.107V29.556H4.36622C5.39544 29.556 6.22663 28.7224 6.22663 27.6932V20.3909L9.76899 24.7302L12.776 28.4339C13.3847 29.2015 14.1841 29.5536 15.0006 29.5536H21.1001L17.1593 24.7106V24.7131Z" fill="#221E1F"/><path d="M28.3587 29.556C24.9997 29.556 22.6675 27.236 22.6675 23.8672V2.10455C22.6675 1.07534 23.5036 0.244141 24.5352 0.244141H28.9063V22.7011C28.9063 23.6252 29.6569 24.3757 30.5761 24.3757H35.0278V27.6956C35.0278 28.7248 34.1918 29.5585 33.1601 29.5585H28.3587V29.556Z" fill="#221E1F"/><path d="M6.82081 14.2011L6.82814 14.1913C6.82814 14.1913 6.82081 14.1986 6.81592 14.2011H6.82081ZM35.9273 5.92578L35.546 6.32916C35.5215 6.33649 34.3603 7.53439 30.9939 7.53439H15.1108C12.6025 7.53439 11.4217 8.55627 10.5196 9.66127L10.0209 10.2749C10.0087 10.292 9.99646 10.3018 9.98424 10.314L6.83059 14.1937C7.9747 13.3308 9.55153 12.8125 11.1528 12.8125H30.9939C33.4044 12.8125 35.7146 12.0962 35.9053 10.2969C35.9298 10.1527 35.9273 10.0646 35.9273 10.0646V5.92823V5.92578Z" fill="#EC1B23"/><path d="M44.2563 12.8361..." fill="#EC1B23"/></svg>
+    </div>
+    <div class="hero-nav-divider"></div>
+    <div class="hero-nav-title">MGM 재고 관리</div>
+    <div class="header-actions">
+      <a href="mgm_calculator.html" class="btn btn-secondary">견적 페이지로 이동</a>
+      <button class="btn btn-danger" onclick="resetAll()">전체 초기화</button>
+    </div>
   </div>
 </div>
 

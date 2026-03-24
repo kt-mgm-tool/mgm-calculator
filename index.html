@@ -15,39 +15,46 @@
 }
 
 :root {
-  --bg-base: #f0f2f5;
+  /* KTM&S Brand Palette */
+  --bg-base: #f6f6f6;
   --bg-card: #ffffff;
-  --bg-input: #f4f5f7;
-  --bg-hero: #2d3436;
+  --bg-input: #f9f9f9;
+  --bg-hero: #181818;
 
-  --border-default: rgba(0,0,0,0.06);
-  --border-hover: rgba(0,0,0,0.12);
-  --border-focus: rgba(74,124,255,0.45);
+  --border-default: #e0e0e0;
+  --border-hover: #b9b9b9;
+  --border-focus: rgba(5,164,188,0.45);
 
-  --text-primary: #2d3436;
-  --text-secondary: #636e72;
-  --text-muted: #b2bec3;
+  --text-primary: #221e1f;
+  --text-secondary: #4c4c4e;
+  --text-muted: #b9b9b9;
   --text-hero: #ffffff;
-  --text-hero-muted: rgba(255,255,255,0.55);
+  --text-hero-muted: rgba(255,255,255,0.5);
 
-  --accent-blue: #4a7cff;
-  --accent-blue-dim: rgba(74,124,255,0.08);
-  --accent-green: #2ecc71;
-  --accent-green-dim: rgba(46,204,113,0.08);
-  --accent-coral: #e74c6f;
-  --accent-coral-dim: rgba(231,76,111,0.08);
+  /* KT Red = primary CTA */
+  --kt-red: #EC1B23;
+  --kt-red-dim: rgba(236,27,35,0.08);
+  /* Teal = accent/highlight */
+  --accent-teal: #05A4BC;
+  --accent-teal-dim: rgba(5,164,188,0.08);
+  /* Mint = positive/discount */
+  --accent-mint: #00A9A7;
+  --accent-mint-dim: rgba(0,169,167,0.08);
+  /* Warm gray for secondary values */
+  --accent-gray: #636363;
 
-  --color-discount: #2ecc71;
-  --color-highlight: #4a7cff;
-  --color-total: #4a7cff;
-  --color-phone: #e74c6f;
-  --color-plan: #2ecc71;
+  /* Semantic colors */
+  --color-discount: #00A9A7;
+  --color-highlight: #05A4BC;
+  --color-total: #221e1f;
+  --color-phone: #EC1B23;
+  --color-plan: #05A4BC;
 
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 16px;
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.1);
   --transition-fast: 150ms cubic-bezier(0.16,1,0.3,1);
   --transition-normal: 300ms cubic-bezier(0.16,1,0.3,1);
 }
@@ -66,41 +73,65 @@ body {
   overflow-x: hidden;
 }
 
-/* === HERO HEADER === */
+/* === NAV BAR (Figma Smart Quote style) === */
 .hero-header {
-  background: var(--bg-base);
-  padding: 32px 24px 16px;
+  background: #ffffff;
+  padding: 0;
+  border-bottom: 1px solid var(--border-default);
   position: relative;
 }
 
 .hero-header::before,
 .hero-header::after { display: none; }
 
-.hero-inner {
-  max-width: 1200px;
+.hero-top {
+  max-width: 1280px;
   margin: 0 auto;
-  text-align: center;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.hero-header h1 {
-  font-size: 1.6rem;
+.hero-logo svg { width: 120px; height: auto; }
+
+.hero-logo {
+  font-size: 18px;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.hero-logo span { color: var(--kt-red); }
+
+.hero-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: #ccc;
+}
+
+.hero-nav-title {
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
-.hero-header p {
-  color: var(--text-secondary);
-  font-size: 14px;
-  margin-top: 8px;
-  font-weight: 400;
-}
+.hero-inner { display: none; }
+.hero-header h1 { display: none; }
+.hero-header h1::after { display: none; }
+.hero-header p { display: none; }
+.hero-badge { display: none; }
 
+/* === PAGE TITLE (below nav, inside main) === */
+.page-title { display: none; }
+
+/* === Admin Link === */
 .admin-link {
   position: absolute;
-  top: 16px;
+  top: 50%;
   right: 24px;
+  transform: translateY(-50%);
   font-size: 12px;
   color: var(--text-muted);
   text-decoration: none;
@@ -120,7 +151,7 @@ body {
 .main-wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px 60px;
+  padding: 48px 16px 60px;
 }
 
 .two-col {
@@ -166,9 +197,9 @@ body {
 }
 
 .card-icon svg { width: 18px; height: 18px; }
-.card-icon.blue { background: var(--accent-blue-dim); color: var(--accent-blue); }
-.card-icon.green { background: var(--accent-green-dim); color: var(--accent-green); }
-.card-icon.coral { background: var(--accent-coral-dim); color: var(--accent-coral); }
+.card-icon.blue { background: var(--accent-teal-dim); color: var(--accent-teal); }
+.card-icon.green { background: var(--accent-mint-dim); color: var(--accent-mint); }
+.card-icon.coral { background: var(--kt-red-dim); color: var(--kt-red); }
 
 .card-title {
   font-size: 14px;
@@ -225,7 +256,7 @@ body {
 }
 
 .custom-select select:hover { border-color: var(--border-hover); background: #fff; }
-.custom-select select:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(74,124,255,0.12); }
+.custom-select select:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(5,164,188,0.12); }
 
 .custom-select::after {
   content: '';
@@ -257,85 +288,100 @@ body {
 }
 
 .num-input:hover { border-color: var(--border-hover); }
-.num-input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(74,124,255,0.12); }
+.num-input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(5,164,188,0.12); }
 .num-input::placeholder { color: var(--text-muted); }
 .num-input::-webkit-outer-spin-button,
 .num-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .num-input[type=number] { -moz-appearance: textfield; }
 
 .helper-text { font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
-.helper-text.error { color: var(--accent-coral); }
+.helper-text.error { color: var(--kt-red); }
 
 /* === SUMMARY TOTAL CARD === */
 .summary-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(74,124,255,0.15);
+  background: linear-gradient(135deg, #222 0%, #333 100%);
+  border: none;
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
-  text-align: center;
-  box-shadow: 0 2px 12px rgba(74,124,255,0.06);
+  padding: 28px 28px 24px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   animation: fadeInUp 0.4s both;
+  position: relative;
+  overflow: hidden;
 }
 
-.summary-label { font-size: 13px; color: var(--text-secondary); font-weight: 500; margin-bottom: 8px; }
+.summary-label { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+.summary-label svg { width: 16px; height: 16px; opacity: 1; }
 
 .summary-amount {
-  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-size: clamp(2.2rem, 7vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: var(--color-total);
+  color: #ffffff;
   transition: all var(--transition-normal);
 }
 
-.summary-sub { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+.summary-amount-unit { font-size: 0.5em; font-weight: 500; opacity: 0.7; margin-left: 2px; }
+
+.summary-sub { font-size: 12px; color: #ddd; margin-top: 8px; }
 
 .summary-pills {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-default);
-  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
   font-variant-numeric: tabular-nums;
 }
 
-.pill.coral { background: var(--accent-coral-dim); color: var(--accent-coral); }
-.pill.green { background: var(--accent-green-dim); color: var(--accent-green); }
-.pill-label { font-weight: 500; font-size: 11px; opacity: 0.8; }
+.pill-label { font-weight: 500; font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 6px; }
+.pill-label svg { width: 14px; height: 14px; }
+
+.pill .pill-value { font-size: 1.3rem; font-weight: 700; color: #ffffff; }
+
+.pill.coral { background: rgba(255,255,255,0.05); }
+.pill.green { background: rgba(255,255,255,0.05); }
 
 /* === COMPARISON SECTION === */
 .comparison-header {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.comparison-header .icon-wrap {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-blue-dim);
-  color: var(--accent-blue);
+.comparison-header .icon-wrap { display: none; }
+
+.comparison-header h3 { font-size: 18px; font-weight: 800; color: var(--text-primary); }
+.comparison-header .auto-tag { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+
+/* Recommendation banner */
+.recommend-banner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: var(--accent-teal-dim);
+  border: 1px solid rgba(5,164,188,0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--text-primary);
 }
 
-.comparison-header .icon-wrap svg { width: 16px; height: 16px; }
-.comparison-header h3 { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.recommend-banner svg { width: 18px; height: 18px; color: var(--accent-teal); flex-shrink: 0; }
+.recommend-banner strong { color: var(--accent-teal); }
 
 .comp-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
@@ -348,7 +394,20 @@ body {
   position: relative;
 }
 
-.comp-card.winner { border-color: var(--accent-blue); box-shadow: 0 2px 16px rgba(74,124,255,0.12); }
+.comp-card.winner { border-color: var(--accent-teal); box-shadow: 0 2px 16px rgba(5,164,188,0.12); }
+
+.comp-card .recommend-badge {
+  display: none;
+  text-align: center;
+  padding: 6px;
+  background: var(--accent-teal);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.comp-card.winner .recommend-badge { display: block; }
 
 .comp-card-head {
   padding: 14px 18px;
@@ -366,8 +425,8 @@ body {
   gap: 4px;
   padding: 4px 10px;
   border-radius: 100px;
-  background: rgba(74,124,255,0.1);
-  color: var(--accent-blue);
+  background: var(--accent-teal-dim);
+  color: var(--accent-teal);
   font-size: 11px;
   font-weight: 700;
 }
@@ -394,7 +453,7 @@ body {
   color: var(--text-primary);
 }
 
-.comp-row-value.green { color: var(--accent-green); }
+.comp-row-value.green { color: var(--accent-mint); }
 
 .comp-row.total {
   padding-top: 12px;
@@ -404,20 +463,52 @@ body {
 }
 
 .comp-row.total .comp-row-label { font-weight: 700; color: var(--text-primary); font-size: 14px; }
-.comp-row.total .comp-row-value { font-size: 18px; font-weight: 800; color: var(--accent-blue); }
+.comp-row.total .comp-row-value { font-size: 18px; font-weight: 800; color: var(--text-primary); }
 
 /* === DETAIL BREAKDOWN === */
-.detail-card {
+.detail-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.detail-section-header h3 { font-size: 18px; font-weight: 800; color: var(--text-primary); }
+
+.detail-section-header .current-tag {
+  padding: 6px 14px;
+  border: 1px solid var(--border-default);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
   background: var(--bg-card);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  margin-top: 12px;
   overflow: hidden;
 }
 
-.detail-card .card-header { padding: 14px 18px; }
-.detail-card .card-body { padding: 14px 18px; }
+.detail-card {
+  background: var(--bg-card);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.detail-card + .detail-card { border-top: 1px solid var(--border-default); }
+
+.detail-card .card-header { padding: 16px 20px; }
+.detail-card .card-body { padding: 14px 20px; }
 
 .data-row {
   display: flex;
@@ -439,28 +530,10 @@ body {
   transition: all var(--transition-normal);
 }
 
-.data-value.highlight { font-size: 15px; font-weight: 700; color: var(--accent-blue); }
-.data-value.negative { color: var(--color-discount); }
+.data-value.highlight { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.data-value.negative { color: var(--accent-mint); }
 
 .data-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-
-/* readonly display value */
-.readonly-display {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  background: var(--bg-input);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  min-height: 40px;
-}
 
 /* === FOOTER NOTES === */
 .notes {
@@ -483,6 +556,24 @@ body {
 
 .notes p::before { content: '\203B'; position: absolute; left: 0; }
 .notes p + p { margin-top: 4px; }
+
+/* readonly display value */
+.readonly-display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-height: 40px;
+}
 
 /* === ANIMATIONS === */
 @keyframes fadeInUp {
@@ -510,25 +601,32 @@ body {
   .form-label { flex: 0 0 110px; }
 }
 
+/* === RESPONSIVE: mobile === */
+@media (max-width: 767px) {
+  .hero-inner { text-align: center; }
+  .hero-top { justify-content: center; }
+  .comp-grid { grid-template-columns: 1fr; }
+}
+
 /* === RESPONSIVE: tablet 768px === */
 @media (min-width: 768px) {
-  .main-wrap { padding: 0 24px 80px; }
-  .two-col { flex-direction: row; }
-  .col-left { width: 40%; min-width: 340px; }
-  .col-right { width: 60%; }
+  .main-wrap { padding: 32px 24px 80px; }
+  .two-col { flex-direction: row; gap: 28px; }
+  .col-left { width: 38%; min-width: 320px; }
+  .col-right { width: 62%; }
   .comp-grid { grid-template-columns: 1fr 1fr; }
-  .hero-header h1 { font-size: 2rem; }
+  .detail-grid { grid-template-columns: 1fr 1fr; }
+  .detail-card + .detail-card { border-top: none; border-left: 1px solid var(--border-default); }
 }
 
 /* === RESPONSIVE: desktop 1024px === */
 @media (min-width: 1024px) {
-  .main-wrap { max-width: 1200px; padding: 0 40px 100px; }
+  .main-wrap { max-width: 1280px; padding: 36px 40px 100px; }
   .col-left {
     position: sticky;
     top: 20px;
     align-self: flex-start;
   }
-  .hero-header h1 { font-size: 2.2rem; }
   .card-body { padding: 18px 24px; }
   .card-header { padding: 18px 24px; }
 }
@@ -536,29 +634,34 @@ body {
 </head>
 <body>
 
-<!-- Hero Header -->
+<!-- Hidden inputs for JS compatibility -->
+<input type="hidden" id="corpDiscount" value="0">
+
+<!-- Nav Bar -->
 <div class="hero-header">
-  <a href="mgm_admin.html" class="admin-link">관리자</a>
-  <div class="hero-inner">
-    <h1>MGM 간편 견적 확인</h1>
-    <p>사내 MGM 정책 견적을 확인합니다</p>
+  <div class="hero-top">
+    <div class="hero-logo">KTM<span>&</span>S</div>
+    <div class="hero-nav-divider"></div>
+    <div class="hero-nav-title">사내 MGM 정책 견적</div>
   </div>
+  <a href="mgm_admin.html" class="admin-link">관리자</a>
 </div>
 
 <!-- Main Content -->
 <div class="main-wrap">
+  <div class="page-title">
+    <h1>견적 설정</h1>
+    <p>고객의 가입 조건을 입력하세요.</p>
+  </div>
   <div class="two-col">
 
     <!-- LEFT: Customer Selection -->
     <div class="col-left">
-      <div class="card" style="animation-delay:0.05s">
-        <div class="card-header">
-          <div class="card-icon blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
-          </div>
+      <div class="card" style="animation-delay:0.05s; border:none; box-shadow:none; background:transparent;">
+        <div class="card-header" style="border:none; padding: 0 0 16px 0;">
           <div>
-            <div class="card-title">고객 선택</div>
-            <div class="card-subtitle">구매 사항을 선택해 주세요</div>
+            <div class="card-title" style="font-size:16px; font-weight:700;">고객 선택</div>
+            <div class="card-subtitle" style="margin-top:4px;">고객의 가입 조건을 입력하세요.</div>
           </div>
         </div>
         <div class="card-body">
@@ -605,7 +708,7 @@ body {
           <div class="form-row">
             <label class="form-label">고객 할인금</label>
             <div class="form-control">
-              <div class="readonly-display"><span id="mgmDiscountDisplay">0</span>원</div>
+              <div class="readonly-display"><span id="corpDiscountDisplay">0</span>원</div>
               <div class="helper-text">MGM 정책에 따른 고객 할인 금액 (자동 계산)</div>
             </div>
           </div>
@@ -619,8 +722,8 @@ body {
           <div class="form-row">
             <label class="form-label">총 반영 고객 할인금</label>
             <div class="form-control">
-              <div class="readonly-display" style="color: var(--accent-blue); font-weight: 700;"><span id="appliedDiscountDisplay">0</span>원</div>
-              <div class="helper-text">고객 할인금 - 권유자 혜택금 = 실제 적용 할인금</div>
+              <div class="readonly-display"><span id="effectiveDiscountDisplay">0</span>원</div>
+              <div class="helper-text">고객 할인금 - 권유자 혜택금 = 실제 적용 금액</div>
             </div>
           </div>
         </div>
@@ -632,33 +735,46 @@ body {
 
       <!-- Section 1: Summary Total -->
       <div class="summary-card" style="animation-delay:0.1s">
-        <div class="summary-label">월 납부 합계</div>
-        <div class="summary-amount" id="grandTotal">0원</div>
-        <div class="summary-sub">24개월 할부 기준 (선택된 할인유형 기준)</div>
+        <div class="summary-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          최종 월 납부액
+        </div>
+        <div class="summary-amount" id="grandTotal">0<span class="summary-amount-unit">원</span></div>
+        <div class="summary-sub">24개월 할부 기준, 부가세 포함</div>
         <div class="summary-pills">
           <div class="pill coral">
-            <span class="pill-label">폰할부금(월)</span>
-            <span id="breakdownPhone">0원</span>
+            <span class="pill-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              월 단말기 할부금
+            </span>
+            <span class="pill-value" id="breakdownPhone">0원</span>
           </div>
           <div class="pill green">
-            <span class="pill-label">통신요금(월)</span>
-            <span id="breakdownPlan">0원</span>
+            <span class="pill-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              월 통신요금
+            </span>
+            <span class="pill-value" id="breakdownPlan">0원</span>
           </div>
         </div>
       </div>
 
-      <!-- Section 2: Comparison -->
-      <div style="animation: fadeInUp 0.5s 0.25s both;">
+      <!-- Section 2: Comparison (할인 비교) -->
+      <div style="animation: fadeInUp 0.5s 0.25s both; margin-top: 8px;">
         <div class="comparison-header">
-          <div class="icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 12H3"/><path d="M21 12H17"/><path d="M6 7l-4 5 4 5"/><path d="M18 7l4 5-4 5"/></svg>
-          </div>
-          <h3>할인 비교 (공시할인 vs 요금할인)</h3>
+          <h3>할인 제도 비교</h3>
+          <span class="auto-tag">자동 추천</span>
+        </div>
+
+        <div class="recommend-banner" id="recommendBanner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span id="recommendText">고객님의 조건에서는 <strong>요금할인</strong>을 선택하시는 것이 <strong>월 16,897원</strong> 더 유리합니다.</span>
         </div>
 
         <div class="comp-grid">
           <!-- Public Subsidy Card -->
           <div class="comp-card" id="compCardPublic">
+            <div class="recommend-badge">추천</div>
             <div class="comp-card-head">
               <span class="comp-card-title">공시할인</span>
               <span class="savings-badge" id="compPublicBadge"></span>
@@ -693,6 +809,7 @@ body {
 
           <!-- Fee Discount Card -->
           <div class="comp-card" id="compCardFee">
+            <div class="recommend-badge">추천</div>
             <div class="comp-card-head">
               <span class="comp-card-title">요금할인</span>
               <span class="savings-badge" id="compFeeBadge"></span>
@@ -731,8 +848,13 @@ body {
         </div>
       </div>
 
-      <!-- Section 3: Phone Purchase Detail -->
-      <div class="detail-card" style="animation: fadeInUp 0.5s 0.3s both;">
+      <!-- Section 3+4: Detail -->
+      <div class="detail-section-header">
+        <h3>상세 견적 내역</h3>
+        <span class="current-tag" id="currentDiscountTag">현재 선택: 공시할인</span>
+      </div>
+      <div class="detail-grid" style="animation: fadeInUp 0.5s 0.3s both;">
+      <div class="detail-card">
         <div class="card-header">
           <div class="card-icon blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
@@ -786,7 +908,7 @@ body {
       </div>
 
       <!-- Section 4: Plan Fee Detail -->
-      <div class="detail-card" style="animation: fadeInUp 0.5s 0.35s both;">
+      <div class="detail-card">
         <div class="card-header">
           <div class="card-icon green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
@@ -815,6 +937,7 @@ body {
             <div class="data-value highlight" id="monthlyPlanNet">0</div>
           </div>
         </div>
+      </div>
       </div>
 
     </div>
@@ -1155,8 +1278,8 @@ function init() {
   $grandTotal = document.getElementById('grandTotal');
   $breakdownPhone = document.getElementById('breakdownPhone');
   $breakdownPlan = document.getElementById('breakdownPlan');
-  $mgmDiscountDisplay = document.getElementById('mgmDiscountDisplay');
-  $appliedDiscountDisplay = document.getElementById('appliedDiscountDisplay');
+  $mgmDiscountDisplay = document.getElementById('corpDiscountDisplay');
+  $appliedDiscountDisplay = document.getElementById('effectiveDiscountDisplay');
   $referralHelper = document.getElementById('referralHelper');
 
   // 서버에서 품절 목록 로드 후 모델 채우기
